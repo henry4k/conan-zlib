@@ -33,7 +33,7 @@ def buildConfigs = [[name: 'windows-x64', triple: 'x86_64-w64-mingw32']/*,
 node {
     stage('Checkout') {
         checkout scm
-        stash name: 'source', includes: './'
+        stash name: 'source', includes: '**'
     }
 
     stage('Build') {
