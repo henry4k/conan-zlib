@@ -19,12 +19,13 @@ def buildStage(config) {
                 unstash 'source'
                 sh 'mkdir build'
                 sh "conan remote add henry4k 'https://api.bintray.com/conan/henry4k/conan'"
-                sh 'GIT_COMMITTER_NAME=fake '+ // Otherwise `git clone` won't work.
-                   'GIT_COMMITTER_EMAIL=fake@example.org '+
+                sh 'GIT_COMMITTER_NAME=noone '+ // Otherwise `git clone` won't work.
+                   'GIT_COMMITTER_EMAIL=noone@example.org '+
                    "conan create --profile ${config.triple} "+
                                  '--build=outdated '+
                                  '--install-folder=$PWD/build '+
-                                 '$PWD/source'
+                                 '$PWD/source '+
+                                 'noone/nothing'
             }
         }
         finally {
