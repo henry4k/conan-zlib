@@ -10,9 +10,7 @@ class DefaultNameConan(ConanFile):
     generators = "cmake"
 
     def build(self):
-        # Compatibility with Conan < 1.0 (#2234)
-        generator = "Unix Makefiles" if platform.system() != "Windows" else None 
-        cmake = CMake(self, generator=generator)
+        cmake = CMake(self)
         cmake.configure()
         cmake.build()
 
